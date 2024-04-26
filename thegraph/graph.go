@@ -19,19 +19,19 @@ func init() {
 	subgraphID = common.GetStringEnvWithDefault("GRAPH_SUBGRAPH_ID", "")
 }
 
-type graphRequest struct {
+type Request struct {
 	Query string `json:"query"`
 }
 
-type graphResponse struct {
+type Response struct {
 	Data map[string]interface{} `json:"data"`
 }
 
-func QueryTheGraph(query string) (map[string]interface{}, error) {
+func RunQuery(query string) (map[string]interface{}, error) {
 
 	url := fmt.Sprintf("https://gateway-arbitrum.network.thegraph.com/api/%s/subgraphs/id/%s", apiKey, subgraphID)
 
-	data := graphRequest{
+	data := Request{
 		Query: query,
 	}
 
@@ -68,7 +68,7 @@ func QueryTheGraph(query string) (map[string]interface{}, error) {
 		return nil, err
 	}
 
-	var jsonResponse graphResponse
+	var jsonResponse Response
 
 	err = json.Unmarshal(responseBody, &jsonResponse)
 	if err != nil {
