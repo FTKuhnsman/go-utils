@@ -15,8 +15,8 @@ var apiKey string
 var subgraphID string
 
 func init() {
-	apiKey = common.GetStringEnvWithDefault("THEGRAPH_API_KEY", "")
-	subgraphID = common.GetStringEnvWithDefault("THEGRAPH_SUBGRAPH_ID", "")
+	apiKey = common.GetStringEnvWithDefault("GRAPH_API_KEY", "")
+	subgraphID = common.GetStringEnvWithDefault("GRAPH_SUBGRAPH_ID", "")
 }
 
 type graphRequest struct {
